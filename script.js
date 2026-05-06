@@ -68,24 +68,25 @@ function startGame() {
 }
 
 function update() {
-    const maxPath = arena.offsetWidth - phone.offsetWidth;
+    const arenaW = arena.clientWidth; // Use clientWidth for accurate mobile math
+    const phoneW = phone.offsetWidth;
+    const maxPath = arenaW - phoneW;
     
-    // Prevent sticking at edges
-    if (posX >= maxPath) { posX = maxPath; direction = -1; }
-    else if (posX <= 0) { posX = 0; direction = 1; }
+    if (posX >= maxPath) direction = -1;
+    if (posX <= 0) direction = 1;
 
     posX += speed * direction;
     phone.style.left = posX + "px";
 
-    const offset = Math.abs((arena.offsetWidth / 2) - (posX + (phone.offsetWidth / 2)));
+    const centerPoint = arenaW / 2;
+    const phonePoint = posX + (phoneW / 2);
+    const offset = Math.abs(centerPoint - phonePoint);
 
-    // Neon Green Feedback
     if (offset < 35) viewfinder.classList.add('aligned');
     else viewfinder.classList.remove('aligned');
 
     animationId = requestAnimationFrame(update);
 }
-
 document.getElementById('btn-stop').onclick = function() {
     cancelAnimationFrame(animationId);
     const offset = Math.abs((arena.offsetWidth / 2) - (posX + (phone.offsetWidth / 2)));
