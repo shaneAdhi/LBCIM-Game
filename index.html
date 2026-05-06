@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CIM Precision Scan Challenge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div id="top-record">🔥 Best Accuracy: Loading...</div>
+        </header>
+
+        <main id="game-arena">
+            <div id="qr-target" class="qr-behind">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=CIM-PAY" alt="QR">
+            </div>
+
+            <div id="moving-phone" class="iphone-frame">
+                <div class="iphone-bezel">
+                    <div class="dynamic-island"></div>
+                    <div class="viewfinder" id="viewfinder">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        <div class="laser-line"></div>
+                    </div>
+                </div>
+            </div>
+
+            <section id="screen-start" class="screen active">
+                <div class="card">
+                    <img id="logo-main" src="unnamed.jpg" alt="CIM Logo" class="brand-logo" style="display:block; margin: 0 auto 20px auto; max-width: 200px;">
+                    <h1 class="title">CIM <br><span class="highlight">Scan Challenge</span></h1>
+                    <div class="input-group" style="margin: 20px 0;">
+                        <input type="text" id="player-name" placeholder="Full Name" style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:2px solid #eee; font-size: 16px;">
+                        <input type="text" id="player-epf" placeholder="EPF Number" style="width:100%; padding:12px; border-radius:8px; border:2px solid #eee; font-size: 16px;" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    </div>
+                    <button id="btn-start" class="btn-primary">START CHALLENGE</button>
+                </div>
+            </section>
+
+            <section id="screen-game" class="screen">
+                <div class="game-heading">
+                    <h2 style="font-size: 4rem; color: #E6007E; font-weight: 900;">ALIGN & TAP</h2>
+                    <p style="font-size: 1.5rem; font-weight: bold; color: #333;">Wait for the neon green glow!</p>
+                </div>
+                <div class="game-ui">
+                    <button id="btn-stop" class="btn-pay">TAP TO PAY</button>
+                </div>
+            </section>
+
+            <section id="screen-result" class="screen">
+                <div class="card result-card">
+                    <img src="unnamed.jpg" alt="CIM" class="brand-logo-small" style="width: 100px; margin-bottom: 10px;">
+                    <h2 id="result-greeting">Scan Successful</h2>
+                    <div class="score-display" style="font-size: 5rem; color: #E6007E; font-weight: 900;">
+                        <span id="result-score">0</span><small style="font-size: 1rem;">px</small>
+                    </div>
+                    <p id="result-msg" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 20px;"></p>
+                    <button id="btn-finish" class="btn-primary">FINISH</button>
+                </div>
+            </section>
+        </main>
+
+        <aside class="leaderboard-panel">
+            <h3 style="color: #E6007E; margin-bottom: 15px;">🏆 Leader Board</h3>
+            <ul id="leaderboard-list"></ul>
+        </aside>
+        
+        <audio id="snd-scan" src="https://cdn.pixabay.com/audio/2022/03/15/audio_73060c41a5.mp3" preload="auto"></audio>
+        <button id="admin-reset" style="position:fixed; bottom:5px; left:5px; opacity:0.1; border:none; background:none;">⚙️</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

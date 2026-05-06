@@ -1,0 +1,36 @@
+:root { --magenta: #E6007E; --green: #00FF88; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Arial Black', sans-serif; }
+body { background: #fff; height: 100vh; overflow: hidden; }
+
+.app-container { display: grid; grid-template-columns: 1fr 350px; grid-template-rows: 60px 1fr; height: 100vh; }
+header { grid-column: 1 / 3; background: var(--magenta); color: white; display: flex; align-items: center; padding: 0 30px; z-index: 1000; font-size: 1.2rem; }
+
+#game-arena { position: relative; background: #f9f9f9; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+
+.qr-behind { position: absolute; z-index: 1; border: 4px solid #eee; padding: 15px; background: white; border-radius: 20px; }
+.qr-behind img { width: 180px; height: 180px; }
+
+.iphone-frame { position: absolute; width: 250px; height: 500px; z-index: 10; display: none; pointer-events: none; }
+.iphone-bezel { width: 100%; height: 100%; border: 14px solid #1a1a1a; border-radius: 50px; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.3); display: flex; justify-content: center; align-items: center; background: transparent; }
+
+.viewfinder { width: 190px; height: 190px; border: 2px solid rgba(0,0,0,0.1); position: relative; transition: 0.1s; }
+.viewfinder.aligned { border: 10px solid var(--green) !important; box-shadow: 0 0 80px var(--green), inset 0 0 30px var(--green) !important; }
+
+.corner { position: absolute; width: 30px; height: 30px; border: 6px solid var(--magenta); }
+.top-left { top: -8px; left: -8px; border-right: 0; border-bottom: 0; }
+.top-right { top: -8px; right: -8px; border-left: 0; border-bottom: 0; }
+.bottom-left { bottom: -8px; left: -8px; border-right: 0; border-top: 0; }
+.bottom-right { bottom: -8px; right: -8px; border-left: 0; border-top: 0; }
+
+.screen { position: absolute; inset: 0; display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 500; background: rgba(255,255,255,0.95); }
+.screen.active { display: flex !important; }
+
+#screen-game.active { background: transparent; justify-content: flex-start; padding-top: 80px; }
+
+.card { background: white; padding: 50px; border-radius: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); text-align: center; width: 500px; }
+.btn-primary { background: var(--magenta); color: white; border: none; padding: 20px; width: 100%; border-radius: 15px; font-weight: 900; cursor: pointer; font-size: 1.3rem; text-transform: uppercase; }
+
+.btn-pay { position: absolute; bottom: 80px; background: var(--magenta); color: white; border: none; padding: 25px 80px; font-size: 2.5rem; font-weight: 900; border-radius: 100px; cursor: pointer; box-shadow: 0 15px 40px rgba(230,0,126,0.4); }
+
+.leaderboard-panel { background: #fff; padding: 30px; border-left: 2px solid #eee; }
+#leaderboard-list li { list-style: none; margin-bottom: 12px; padding: 15px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #eee; font-size: 1.1rem; }
