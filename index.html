@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CIM Precision Scan Challenge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div id="top-record">🔥 Best Accuracy: Loading...</div>
+        </header>
+
+        <main id="game-arena">
+            <div id="qr-target" class="qr-behind">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=CIM-PAY" alt="QR">
+            </div>
+
+            <div id="moving-phone" class="iphone-frame">
+                <div class="iphone-bezel">
+                    <div class="dynamic-island"></div>
+                    <div class="viewfinder" id="viewfinder">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        <div class="laser-line"></div>
+                    </div>
+                </div>
+            </div>
+
+            <section id="screen-start" class="screen active">
+                <div class="card login-card">
+                    <div class="login-header">
+                        <img id="logo-main" src="unnamed.jpg" alt="CIM" class="brand-logo">
+                        <div class="login-title-block">
+                            <h1 class="title">CIM Precision</h1>
+                            <span class="highlight-tag">Scan Challenge</span>
+                        </div>
+                    </div>
+                    <p class="login-subtitle">Enter your details to begin</p>
+                    <div class="input-group">
+                        <div class="input-field">
+                            <label for="player-name">Full Name</label>
+                            <input type="text" id="player-name" placeholder="e.g. Kamal Perera" autocomplete="off">
+                        </div>
+                        <div class="input-field">
+                            <label for="player-nic">NIC Number</label>
+                            <input type="text" id="player-nic" placeholder="e.g. 199012345678" oninput="this.value = this.value.toUpperCase();" autocomplete="off">
+                        </div>
+                        <div class="input-field">
+                            <label for="player-epf">EPF Number</label>
+                            <input type="text" id="player-epf" placeholder="Numbers only" oninput="this.value = this.value.replace(/[^0-9]/g, '');" autocomplete="off">
+                        </div>
+                    </div>
+                    <button id="btn-start" class="btn-primary">
+                        <span>START CHALLENGE</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    </button>
+                </div>
+            </section>
+
+            <section id="screen-game" class="screen">
+                <div class="game-heading">
+                    <h2>ALIGN & TAP</h2>
+                    <p>Wait for the neon green glow!</p>
+                </div>
+                <div class="game-ui">
+                    <button id="btn-stop" class="btn-pay">TAP TO PAY</button>
+                </div>
+            </section>
+
+            <section id="screen-result" class="screen">
+                <div class="card result-card">
+                    <img src="unnamed.jpg" alt="CIM" class="brand-logo-small">
+                    <h2 id="result-greeting">Scan Result</h2>
+                    <div class="score-display">
+                        <span id="result-score">0</span><small>px</small>
+                    </div>
+                    <p id="result-msg"></p>
+                    <button id="btn-finish" class="btn-primary">FINISH SESSION</button>
+                </div>
+            </section>
+        </main>
+
+        <aside class="leaderboard-panel">
+            <h3>🏆 Accuracy Leaders</h3>
+            <ul id="leaderboard-list"></ul>
+        </aside>
+        
+        <audio id="snd-scan" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
+        <button id="admin-reset" title="Reset">⚙️</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
